@@ -1,0 +1,63 @@
+version: '3.7'
+networks:
+  inside:
+    driver: bridge
+  traefik-net:
+    external: true
+services:
+  karim_backend:
+    restart: always
+    container_name: summarization_api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - inside
+      - traefik-net
+    volumes:
+      - .:/app
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+
+   
+    ################################################################
+    # Define the following labels for each additional service
+    # in docker-compose
+    ################################################################# 
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=8088" # port of the traefik instance
+      - "traefik.docker.network=traefik-net" # traefik network
+
+      ################################################################
+      # Please edit the variables below to configure your service
+      #################################################################
+      
+      # 1) Define and identify a new router:
+      # 1.1) Replace <YOUR_ROUTER> with an arbitrary string of your choice.
+      # 1.2) Replace <YOUR_ENDPOINT> with an arbitrary string of your choice. 
+      #      Keep the leading dash ('/'). This endpoint defines
+      #      which requests will be forwarded to your service.
+      - "traefik.http.routers.karim_router.entrypoints=websecure"
+      - "traefik.http.routers.karim_router.rule=PathPrefix(`/summarization_api`)"
+      - "traefik.http.routers.karim_router.tls=true"
+
+      # 2) Define and identify a new prefix middleware:
+      # 2.1) Replace <YOUR_MIDDLEWARE_NAME> with an arbitrary string of your choice.
+      #      If this middleware matches <YOUR_PREFIX> it will strip this prefix from
+      #      the url and store it in a X-Forwarded-Prefix header.
+      # 2.2) Replace <YOUR_PREFIX> with the string you've defined in (1.2)
+      - "traefik.http.middlewares.strip-karim_router.stripprefix.prefixes=/summarization_api"
+
+      # 3) Apply the above middleware to the previously defined router.
+      # 3.1) Replace <YOUR_ROUTER> with the string you've defined in (1.1)
+      # 3.2) Replace <YOUR_MIDDLEWARE_NAME> with the string you've defined in (2.1)
+      - "traefik.http.routers.karim_router.middlewares=strip-karim_router@docker"
+
+      # 4) Configure on which port your service is running.
+      # 4.1) Replace <YOUR_PORT> with the port that your service is running on.
+      - traefik.http.services.karim-summarization_api-service.loadbalancer.server.port=8000

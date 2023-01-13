@@ -1,0 +1,48 @@
+.topbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    padding-top: var(--bs-gutter-x,.75rem);
+    padding-bottom: var(--bs-gutter-x,.75rem);
+}
+
+.topbar-left {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    padding-left: var(--bs-gutter-x,.75rem);
+}
+
+
+.topbar-left .document-icon {
+    width: 40px;
+    margin-right: var(--bs-gutter-x,.75rem);
+}
+
+.topbar-left h1 {
+    font-size: 1.25rem;
+    margin-bottom: 0;
+}
+
+.topbar-left .description {
+    margin: 0;
+    color: #666;
+}
+
+.topbar-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    padding-right: var(--bs-gutter-x,.75rem);
+}
+
+.modal-trigger {
+    cursor: pointer;
+}
+
+.modal-trigger.bg.primary:hover {
+    background-color: #0b5ed7;
+}
