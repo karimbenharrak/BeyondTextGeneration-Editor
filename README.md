@@ -1,6 +1,6 @@
 # Beyond Text Generation: Supporting Writers with Continuous Automatic Text Summaries
 
-This repository contains the code for the system described in the paper "Beyond Text Generation: Supporting Writers with Continuous Automatic Text Summaries" by Hai Dang, Karim Benharrak, Florian Lehmann, and Daniel Buschek. The system is designed to automatically generate continuous text summaries of a given document in real-time, as the user writes.
+This repository contains the code for the system described in the paper [Beyond Text Generation: Supporting Writers with Continuous Automatic Text Summaries](https://dl.acm.org/doi/abs/10.1145/3526113.3545672) by Hai Dang, Karim Benharrak, Florian Lehmann, and Daniel Buschek. The system is designed to automatically generate continuous text summaries of a given document in real-time, as the user writes.
 
 ## Getting Started
 
