@@ -16,6 +16,10 @@ You can install these dependencies by running the following command:
 pip install -r requirements.txt
 ```
 
+Also you need to download the following file and copy it into the backend folder:
+
+[glove.6B.100d.txt](https://www.kaggle.com/datasets/danielwillgeorge/glove6b100dtxt)
+
 #### Running the backend
 
 To run the backend, simply use the following command in the backend folder:
