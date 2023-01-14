@@ -6,6 +6,8 @@ This repository contains the code for the system described in the paper [Beyond 
 
 ### Backend
 
+All code instruction should be executed in ```./backend```
+
 #### Prerequisites
 
 To run the backend, you will need to have some Python packages installed.
@@ -30,6 +32,8 @@ python flask_basic_app.py
 
 ### Frontend
 
+All code instruction should be executed in ```./frontend```
+
 #### Prerequisites
 
 To run the frontend, you will need to have some npm packages installed.
@@ -49,6 +53,11 @@ npm start
 ```
 
 ### Using the System
+
+The system can now be accessed on the following address:
+```
+http://localhost:3000/
+```
 
 To use the system, you will need to start writing on your document. You can the interact with the sidebar and the system will then generate a continuous summary of each paragraphs as you write.
 
